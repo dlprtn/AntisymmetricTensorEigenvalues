@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     31158,        819]
-NotebookOptionsPosition[     29998,        790]
-NotebookOutlinePosition[     30390,        806]
-CellTagsIndexPosition[     30347,        803]
+NotebookDataLength[     36423,        933]
+NotebookOptionsPosition[     35263,        904]
+NotebookOutlinePosition[     35655,        920]
+CellTagsIndexPosition[     35612,        917]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -38,11 +38,19 @@ Cell[BoxData[
    RowBox[{"(*", " ", "N", " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"R", "=", "4"}], ";"}], "   ", 
-   RowBox[{"(*", " ", "p", " ", "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "p", " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"number", " ", "of", " ", "samples"}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"repnum", "=", "10"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"repnum", "=", "10"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "standard", " ", "deviation", " ", "of", " ", "the", " ", "Gaussian", " ",
+      "distribution", " ", "of", " ", "the", " ", "tensor"}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"alpha", "=", "1"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"alpha", "=", "1"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"rsize", "=", 
      RowBox[{"1.", "/", 
@@ -54,7 +62,16 @@ Cell[BoxData[
     RowBox[{"cut", "=", 
      RowBox[{"10", "^", 
       RowBox[{"(", 
-       RowBox[{"-", "6"}], ")"}]}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"-", "6"}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "prepares", " ", "an", " ", "epsilon", " ", "tensor", " ", "of", " ", 
+      "order", " ", "4"}], ",", " ", 
+     RowBox[{
+     "with", " ", "indices", " ", "from", " ", "1", " ", "to", " ", "R"}]}], 
+    " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"eps", "=", 
      RowBox[{"Table", "[", 
@@ -62,13 +79,13 @@ Cell[BoxData[
        RowBox[{"{", "R", "}"}], ",", 
        RowBox[{"{", "R", "}"}], ",", 
        RowBox[{"{", "R", "}"}], ",", 
-       RowBox[{"{", "R", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"{", "R", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
      RowBox[{"eps", "[", 
       RowBox[{"[", 
        RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "]"}], "]"}], "=", 
-     RowBox[{"4", "!"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"4", "!"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"eps", "=", 
      RowBox[{"Normal", "[", 
@@ -78,8 +95,21 @@ Cell[BoxData[
          RowBox[{"{", 
           RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}], "]"}]}], "]"}], 
       "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "prepares", " ", "the", " ", "collection", " ", "of", " ", "eigenvector",
+       " ", "variables", " ", "to", " ", "solve", " ", "for"}], ",", " ", 
+     RowBox[{
+      RowBox[{
+      "fixing", " ", "the", " ", "continuous", " ", "part", " ", "of", " ", 
+       "the", " ", "SO", 
+       RowBox[{"(", "p", ")"}], " ", "gauge"}], ";", " ", 
+      RowBox[{
+      "all", " ", "variables", " ", "are", " ", "gathered", " ", "in", " ", 
+       "xvar"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"vert", "=", "0"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"vert", "=", "0"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"v", "=", 
      RowBox[{"Table", "[", "\[IndentingNewLine]", 
@@ -123,10 +153,9 @@ Cell[BoxData[
        RowBox[{"{", 
         RowBox[{"i", ",", "1", ",", "R"}], "}"}], ",", 
        RowBox[{"{", 
-        RowBox[{"a", ",", "1", ",", "L"}], "}"}]}], "]"}]}], ";"}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"a", ",", "1", ",", "L"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"xtot", "=", "vert"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"xtot", "=", "vert"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"xvar", "=", 
      RowBox[{"Table", "[", 
@@ -137,7 +166,10 @@ Cell[BoxData[
    "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"time", "=", 
-     RowBox[{"AbsoluteTime", "[", "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"AbsoluteTime", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"initialize", " ", "the", " ", "tensor"}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"t", "=", 
      RowBox[{"Table", "[", 
@@ -167,6 +199,17 @@ Cell[BoxData[
     RowBox[{"res", "=", 
      RowBox[{
      "ParallelTable", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+        "prepares", " ", "the", " ", "totally", " ", "antisymmetric", " ", 
+         "tensor"}], ",", " ", 
+        RowBox[{
+        "assigning", " ", "for", " ", "all", " ", "components", " ", "with", " ",
+          "permuted", " ", "indices", " ", "a", " ", "random", " ", 
+         "Gaussian", " ", "number", " ", "multiplied", " ", "by", " ", "the", 
+         " ", "sign", " ", "of", " ", "the", " ", "permutation"}]}], " ", 
+       "*)"}], "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{
         RowBox[{"Do", "[", "\[IndentingNewLine]", 
@@ -177,6 +220,12 @@ Cell[BoxData[
              RowBox[{"NormalDistribution", "[", 
               RowBox[{"0", ",", "rsize"}], "]"}], "]"}]}], ";", 
            "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+             RowBox[{
+             "the", " ", "set", " ", "of", " ", "permutations", " ", "of", " ",
+               "the", " ", "indices", " ", "i"}], "<", "j", "<", "k", "<", 
+             "l"}], " ", "*)"}], "\[IndentingNewLine]", 
            RowBox[{"ilt", "=", 
             RowBox[{"Permutations", "[", 
              RowBox[{"{", 
@@ -224,7 +273,10 @@ Cell[BoxData[
           RowBox[{"{", 
            RowBox[{"l", ",", 
             RowBox[{"k", "+", "1"}], ",", "L"}], "}"}]}], "]"}], ";", 
-        "\[IndentingNewLine]", "\[IndentingNewLine]", " ", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"the", " ", "eigenvector", " ", "equation"}], " ", "*)"}], 
+        "\[IndentingNewLine]", " ", 
         RowBox[{"eqs", "=", 
          RowBox[{"Flatten", "[", 
           RowBox[{"Table", "[", "\[IndentingNewLine]", 
@@ -278,10 +330,12 @@ Cell[BoxData[
         RowBox[{"solx", "=", 
          RowBox[{"NSolve", "[", 
           RowBox[{"eqs", ",", "xvar"}], "]"}]}], ";", "\[IndentingNewLine]", 
-        "\[IndentingNewLine]", 
         RowBox[{"v0", "=", 
          RowBox[{"v", " ", "/.", " ", "solx"}]}], ";", "\[IndentingNewLine]", 
         "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"picks", " ", "the", " ", "real", " ", "solutions"}], " ", 
+         "*)"}], "\[IndentingNewLine]", 
         RowBox[{"vert", "=", 
          RowBox[{"Re", "[", 
           RowBox[{"Select", "[", 
@@ -292,6 +346,11 @@ Cell[BoxData[
                RowBox[{"Flatten", "[", 
                 RowBox[{"Im", "[", "#", "]"}], "]"}], "]"}], "<", "cut"}], 
              " ", "&"}]}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "picks", " ", "the", " ", "solutions", " ", "satisfying", " ", "the",
+           " ", "discrete", " ", "gauge"}], " ", "*)"}], 
         "\[IndentingNewLine]", 
         RowBox[{"vert", "=", 
          RowBox[{"Select", "[", 
@@ -314,6 +373,12 @@ Cell[BoxData[
                 RowBox[{"3", ",", "3"}], "]"}], "]"}], ">", "0"}]}], " ", 
             "&"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
         "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "keeping", " ", "the", " ", "solutions", " ", "that", " ", "differ", 
+          " ", "by", " ", "at", " ", 
+          RowBox[{"least", " ", "'"}], 
+          RowBox[{"cut", "'"}]}], " ", "*)"}], "\[IndentingNewLine]", 
         RowBox[{"v0d", "=", 
          RowBox[{"Union", "[", 
           RowBox[{"vert", ",", 
@@ -326,6 +391,13 @@ Cell[BoxData[
                  RowBox[{"#1", "-", "#2"}], "]"}], "]"}], "<", "cut"}], "&"}],
               ")"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
         "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "computing", " ", "the", " ", "sign", " ", "of", " ", "the", " ", 
+          "determinant", " ", "of", " ", "the", " ", "jacobian", " ", "for", " ",
+           "each", " ", "solution", " ", 
+          RowBox[{"in", " ", "'"}], 
+          RowBox[{"v0d", "'"}]}], " ", "*)"}], "\[IndentingNewLine]", 
         RowBox[{"signlist", "=", 
          RowBox[{"Table", "[", "\[IndentingNewLine]", 
           RowBox[{
@@ -334,6 +406,9 @@ Cell[BoxData[
              RowBox[{"v0d", "[", 
               RowBox[{"[", "v0dnum", "]"}], "]"}]}], ";", 
             "\[IndentingNewLine]", "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{"computes", " ", "the", " ", "jacobian", " ", "matrix"}],
+              " ", "*)"}], "\[IndentingNewLine]", 
             RowBox[{"mat", "=", 
              RowBox[{
               RowBox[{"IdentityMatrix", "[", "ialength", "]"}], "-", 
@@ -389,6 +464,11 @@ Cell[BoxData[
                 RowBox[{"{", 
                  RowBox[{"j", ",", "1", ",", "ialength"}], "}"}]}], "]"}]}]}],
              ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+             "sorts", " ", "the", " ", "eigenvalues", " ", "and", " ", "puts",
+               " ", "the", " ", "6", " ", "zero", " ", "eigenvalues", " ", 
+              "last"}], " ", "*)"}], "\[IndentingNewLine]", 
             RowBox[{"vert", "=", 
              RowBox[{"Sort", "[", 
               RowBox[{
@@ -398,6 +478,12 @@ Cell[BoxData[
                  RowBox[{"Abs", "[", "#1", "]"}], ">=", 
                  RowBox[{"Abs", "[", "#2", "]"}]}], " ", "&"}]}], "]"}]}], ";",
              "\[IndentingNewLine]", "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+             "computes", " ", "the", " ", "sign", " ", "of", " ", "the", " ", 
+              "determinant", " ", "by", " ", "counting", " ", "the", " ", 
+              "number", " ", "of", " ", "its", " ", "negative", " ", 
+              "eigenvalues"}], " ", "*)"}], "\[IndentingNewLine]", 
             RowBox[{"Length", "[", 
              RowBox[{"Select", "[", 
               RowBox[{
@@ -411,6 +497,10 @@ Cell[BoxData[
             RowBox[{"v0dnum", ",", "1", ",", 
              RowBox[{"Length", "[", "v0d", "]"}]}], "}"}]}], "]"}]}], ";", 
         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "computes", " ", "the", " ", "norm", " ", "of", " ", "each", " ", 
+          "solution"}], " ", "*)"}], "\[IndentingNewLine]", 
         RowBox[{"normlist", "=", 
          RowBox[{"Map", "[", 
           RowBox[{"Norm", ",", 
@@ -418,6 +508,15 @@ Cell[BoxData[
             RowBox[{"[", 
              RowBox[{"All", ",", "1"}], "]"}], "]"}]}], "]"}]}], ";", 
         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "collects", " ", "together", " ", "the", " ", "norm", " ", "of", " ",
+           "the", " ", "solution", " ", 
+          RowBox[{"in", " ", "'"}], 
+          RowBox[{"v0d", "'"}], " ", "and", " ", "the", " ", "sign", " ", 
+          "of", " ", "the", " ", "jacobian", " ", "of", " ", "their", " ", 
+          "determinant", " ", "matrix"}], " ", "*)"}], "\[IndentingNewLine]", 
+        
         RowBox[{"Transpose", "[", 
          RowBox[{"{", 
           RowBox[{"normlist", ",", "signlist"}], "}"}], "]"}]}], 
@@ -442,12 +541,18 @@ Cell[BoxData[
      RowBox[{"\"\<time=\>\"", ",", 
       RowBox[{
        RowBox[{"AbsoluteTime", "[", "]"}], "-", "time"}]}], "]"}], ";"}], 
-   "\n", "\[IndentingNewLine]"}]}]], "Input",
+   "\[IndentingNewLine]", "\n"}]}]], "Input",
  CellChangeTimes->{{3.965871676920622*^9, 3.9658716995007143`*^9}, 
    3.965871788995997*^9, 3.965871869943643*^9, 3.965872293271698*^9, {
-   3.965872336334989*^9, 3.965872360457919*^9}},
- CellLabel->
-  "In[155]:=",ExpressionUUID->"a8001a33-fb11-4d35-b6e2-ffa9960e5655"],
+   3.965872336334989*^9, 3.965872360457919*^9}, {3.967107248126821*^9, 
+   3.967107476290701*^9}, {3.967107731299049*^9, 3.967107894807108*^9}, {
+   3.9671079624889803`*^9, 3.967108099763974*^9}, {3.967108134027418*^9, 
+   3.967108293797797*^9}, {3.967108326953189*^9, 3.967108373308869*^9}, {
+   3.967108460993369*^9, 3.9671085042039547`*^9}, {3.9671085382072067`*^9, 
+   3.967108567748542*^9}, {3.967108873051662*^9, 3.967108877768857*^9}, {
+   3.967108992708189*^9, 3.967109022228153*^9}, {3.9671090787893248`*^9, 
+   3.967109157800301*^9}},ExpressionUUID->"a8001a33-fb11-4d35-b6e2-\
+ffa9960e5655"],
 
 Cell[CellGroupData[{
 
@@ -475,7 +580,7 @@ Cell[BoxData[
   "\:8a55\:4fa1\:4e2d\:ff1aIn[155]:=",ExpressionUUID->"9c26a7a2-fe37-450c-\
 b561-b9e658f7e17e"]
 }, Open  ]]
-}, Open  ]]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -489,8 +594,10 @@ Cell["Plotting (N=5)", "Subsection",
 6cddf29e8a87"],
 
 Cell[BoxData[
- RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-  
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"plotting", " ", "the", " ", "data"}], " ", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
     RowBox[{"minrange", "=", ".8"}], ";"}], "\[IndentingNewLine]", 
@@ -601,19 +708,22 @@ Cell[BoxData[
    RowBox[{"gr1", "=", 
     RowBox[{"ListPlot", "[", 
      RowBox[{"plotlist", ",", 
-      RowBox[{"PlotStyle", "->", "Red"}]}], "]"}]}], "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", "\[IndentingNewLine]"}]}]], "Input",
+      RowBox[{"PlotStyle", "->", "Red"}]}], "]"}]}], 
+   "\[IndentingNewLine]"}]}]], "Input",
  CellChangeTimes->{{3.965871837325068*^9, 3.9658718378132*^9}, {
    3.965882704917602*^9, 3.965882705117159*^9}, {3.9658945975997953`*^9, 
    3.965894597935399*^9}, {3.966475461561393*^9, 3.966475462312097*^9}, {
    3.966475495643507*^9, 3.9664754957455797`*^9}, {3.9664755366892757`*^9, 
-   3.966475536790351*^9}, 3.9664817089197617`*^9, 3.9671057795844193`*^9},
- CellLabel->
-  "In[564]:=",ExpressionUUID->"d1106d14-6bda-4e44-96ee-1428dc0cc60b"],
+   3.966475536790351*^9}, 3.9664817089197617`*^9, 3.9671057795844193`*^9, {
+   3.967109190944968*^9, 
+   3.967109236163477*^9}},ExpressionUUID->"d1106d14-6bda-4e44-96ee-\
+1428dc0cc60b"],
 
 Cell[BoxData[
- RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-  
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"plotting", " ", "the", " ", "analytic", " ", "curve"}], " ", 
+   "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
     RowBox[{"Clear", "[", 
@@ -653,7 +763,9 @@ Cell[BoxData[
          RowBox[{"k", "/", "2"}], "]"}], ",", 
         RowBox[{"{", 
          RowBox[{"k", ",", "1", ",", "p"}], "}"}]}], "]"}]}]}]}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"the", " ", "associated", " ", "polynomial"}], " ", "*)"}], " ", "\[IndentingNewLine]", 
    RowBox[{"Which", "[", 
     RowBox[{
      RowBox[{"L", "==", "6"}], ",", 
@@ -746,7 +858,7 @@ Cell[BoxData[
        RowBox[{"(", 
         RowBox[{"4", " ", "al", " ", 
          RowBox[{"pval", "!"}]}], ")"}]}], "]"}]}]}], "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{"Show", "[", 
     RowBox[{
      RowBox[{"Plot", "[", 
@@ -770,7 +882,9 @@ Cell[BoxData[
   3.96588281670268*^9, 3.965882816814918*^9}, {3.965894644928721*^9, 
   3.965894645124309*^9}, {3.96589470357815*^9, 3.9658947306395283`*^9}, {
   3.966475289254199*^9, 3.966475289802779*^9}, {3.967105884481552*^9, 
-  3.967105884600576*^9}},ExpressionUUID->"8e6594a6-5a42-4ff2-a10e-\
+  3.967105884600576*^9}, {3.9671091847927732`*^9, 3.967109185851923*^9}, {
+  3.96710922746381*^9, 
+  3.967109280373818*^9}},ExpressionUUID->"8e6594a6-5a42-4ff2-a10e-\
 c8d3385ffd1a"],
 
 Cell[BoxData[
@@ -808,22 +922,20 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[576, 22, 366, 6, 53, "Subsection",ExpressionUUID->"6b5639dd-942d-4415-aa25-aa591c6921ee"],
 Cell[CellGroupData[{
-Cell[967, 32, 16915, 417, 1949, "Input",ExpressionUUID->"a8001a33-fb11-4d35-b6e2-ffa9960e5655"],
+Cell[967, 32, 21853, 522, 2276, "Input",ExpressionUUID->"a8001a33-fb11-4d35-b6e2-ffa9960e5655"],
 Cell[CellGroupData[{
-Cell[17907, 453, 433, 10, 23, "Print",ExpressionUUID->"bdb9f9cf-6552-4453-a833-ccdc5f373884"],
-Cell[18343, 465, 473, 10, 23, "Print",ExpressionUUID->"9c26a7a2-fe37-450c-b561-b9e658f7e17e"]
+Cell[22845, 558, 433, 10, 23, "Print",ExpressionUUID->"bdb9f9cf-6552-4453-a833-ccdc5f373884"],
+Cell[23281, 570, 473, 10, 23, "Print",ExpressionUUID->"9c26a7a2-fe37-450c-b561-b9e658f7e17e"]
 }, Open  ]]
-}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18877, 482, 363, 6, 53, "Subsection",ExpressionUUID->"d19d7057-f955-4600-bb2a-6cddf29e8a87"],
-Cell[19243, 490, 4657, 121, 621, "Input",ExpressionUUID->"d1106d14-6bda-4e44-96ee-1428dc0cc60b"],
-Cell[23903, 613, 5633, 160, 565, "Input",ExpressionUUID->"8e6594a6-5a42-4ff2-a10e-c8d3385ffd1a"],
-Cell[29539, 775, 443, 12, 29, "Input",ExpressionUUID->"d01b61b1-1e19-4475-8f07-52e8718607f4"]
+Cell[23815, 587, 363, 6, 53, "Subsection",ExpressionUUID->"d19d7057-f955-4600-bb2a-6cddf29e8a87"],
+Cell[24181, 595, 4725, 124, 580, "Input",ExpressionUUID->"d1106d14-6bda-4e44-96ee-1428dc0cc60b"],
+Cell[28909, 721, 5892, 166, 524, "Input",ExpressionUUID->"8e6594a6-5a42-4ff2-a10e-c8d3385ffd1a"],
+Cell[34804, 889, 443, 12, 29, "Input",ExpressionUUID->"d01b61b1-1e19-4475-8f07-52e8718607f4"]
 }, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
